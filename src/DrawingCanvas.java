@@ -5,6 +5,8 @@
  *
  *  Created by Sally Goldin, 23 June 2005
  *  Updated 30 December 2011
+ *
+ *    Edited by Nonthakorn Sukprom 60070503435, 15 February 2020
  */
 
 import javax.swing.*;
@@ -17,6 +19,9 @@ import java.util.Iterator;
 /**
  * Simple subclass of JPanel that allows us to set the size of
  * a drawing area, also to clear it.
+ *
+ *    Edited by Nonthakorn Sukprom 60070503435, 15 February 2020
+ *
  */
 public class DrawingCanvas extends JPanel implements MouseListener
 {
