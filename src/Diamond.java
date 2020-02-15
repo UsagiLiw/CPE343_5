@@ -1,11 +1,10 @@
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * Simple class representing a diamond object. 
  *
  *   Created 24 August 2017 for Exercise 3
- *
+ *  Edtied by Nonthakorn Sukprom 60070503435, 15 February 2020
  */
 public class Diamond extends AbstractShape
 {
@@ -44,6 +43,7 @@ public class Diamond extends AbstractShape
        vertices.add(new Point(x+hAxis/2,y+vAxis/2));
        vertices.add(new Point(x,y+vAxis));		    
        vertices.add(new Point(x-hAxis/2,y+vAxis/2));
+       calBoundBox();
     }
 
     /**
@@ -76,7 +76,7 @@ public class Diamond extends AbstractShape
     public String toString()
     {
 	String value = "Diamond: top point at (" + anchor.x+","+anchor.y+") with v axis " + verticalAxis + ", h axis " +
-	    horizontalAxis;
+	    horizontalAxis + "\n with bounding X: " + lowestX + " - " + highestX + " Y : " + lowestY + "-" +highestY;
 	return value;
     }
 

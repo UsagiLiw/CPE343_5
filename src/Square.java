@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * Simple class representing a square figure. Designed 
@@ -11,7 +10,7 @@ import java.util.ArrayList;
  *   Modified 24 August 2017 for Exercise 3, to make into a subclass
  *   of AbstractShape
  *
- *
+ *  Edited by Nonthakorn Sukprom 60070503435, 15 February 2020
  */
 public class Square extends AbstractShape
 {
@@ -39,6 +38,7 @@ public class Square extends AbstractShape
        vertices.add(new Point(x + side,y));  // upper right
        vertices.add(new Point(x + side,y + side));  // lower right
        vertices.add(new Point(x,y + side)); // lower left
+        calBoundBox();
     }
 
     /* draw, move, and drawAll are handled by the superclass */
@@ -67,7 +67,7 @@ public class Square extends AbstractShape
      */
     public String toString()
     {
-	String value = "Square: upper left at (" + anchor.x+","+anchor.y+") with sides " + oneside;
+	String value = "Square: upper left at (" + anchor.x+","+anchor.y+") with sides " + oneside + "\n with bounding X: " + lowestX + " - " + highestX + " Y : " + lowestY + "-" +highestY;
 	return value;
     }
 	

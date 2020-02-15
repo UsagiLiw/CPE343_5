@@ -1,11 +1,10 @@
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * Simple class representing a circle object. 
  *
  *   Created 26 Aug 2017 for Lecture 4
- *
+ *  Edited by Nonthakorn Sukprom 60070503435, 15 February 2020
  */
 public class Circle extends AbstractShape
 {
@@ -29,6 +28,7 @@ public class Circle extends AbstractShape
        anchor = new Point(x,y);
        vertices.add(anchor);
        this.radius = radius;
+       calBoundBox();
     }
 
     /**
@@ -62,12 +62,34 @@ public class Circle extends AbstractShape
        graphics.drawString(new String(" " + shapeId),labelx,labely);
     }
 
+    public void draw(Graphics2D graphics, Color fillColor)
+    {
+        draw(graphics);
+        graphics.setPaint(fillColor);
+        graphics.fillOval(anchor.x,anchor.y,2*radius,2*radius);
+    }
+
     /**
      * Override toString to give more informative information
      */
     public String toString()
     {
-	String value = "Circle: center at (" + anchor.x+","+anchor.y+") with radius " + radius;
-	return value;
+	    String value = "Circle: center at (" + anchor.x+","+anchor.y+") with radius " + radius
+                + "\n with bounding X: " + lowestX + " - " + highestX + " Y : " + lowestY + "-" +highestY;
+        return value;
+    }
+
+    /**
+     * Calculate bounding box of shape
+     * by find highest and lowest value of X and Y in shape
+     * then assign to member in object
+     */
+    @Override
+    protected void calBoundBox()
+    {
+        highestX = anchor.x + (radius * 2) ;
+        lowestX = anchor.x;
+        highestY = anchor.y + (radius * 2);         // highest in numerical context
+        lowestY = anchor.y;                         // lowest in numerical context
     }
 }

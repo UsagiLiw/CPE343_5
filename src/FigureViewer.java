@@ -1,8 +1,9 @@
 import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
 import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *  FigureViewer
@@ -12,7 +13,8 @@ import java.util.*;
  *  Created by Sally Goldin, 23 April 2013 for CPE 113
  *  Augmented for CPE372, 13 August 2017
  *  Modified for Exercise 2, CPE372 19 August 2017
- *     Removed the drawing completely, added function to return graphics 
+ *     Removed the drawing completely, added function to return graphics
+ *     Edited by Nonthakorn Sukprom 60070503435, 15 February 2020
  */
 public class FigureViewer extends JFrame 
                                      implements ActionListener
@@ -21,6 +23,7 @@ public class FigureViewer extends JFrame
    private DrawingCanvas drawCanvas = null;
    private JButton clearButton = null;
    private JButton exitButton = null;
+   private JButton drawAllButton = null;
 
 
    /**
@@ -47,6 +50,10 @@ public class FigureViewer extends JFrame
       clearButton.addActionListener(this);
       controlPanel.add(clearButton);
 
+      drawAllButton = new JButton("Draw All");
+      drawAllButton.addActionListener(this);
+      controlPanel.add(drawAllButton);
+
       exitButton = new JButton("Exit");
       exitButton.addActionListener(this);
       controlPanel.add(exitButton);
@@ -69,11 +76,15 @@ public class FigureViewer extends JFrame
        Object source = e.getSource();
        if (source == exitButton)
        {
-	   System.exit(0);
+          System.exit(0);
        }
        else if (source == clearButton)
        {
-	   drawCanvas.clear();
+          drawCanvas.clear();
+       }
+       else if (source == drawAllButton)
+       {
+          AbstractShape.drawAll(getViewerGraphics());
        }
    }
 
@@ -93,6 +104,8 @@ public class FigureViewer extends JFrame
    {
        return (Graphics2D) drawCanvas.getGraphics();
    }
+
+
 }
 
 

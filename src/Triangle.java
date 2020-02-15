@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * Simple class representing a triangle object. Designed 
@@ -11,8 +10,8 @@ import java.util.ArrayList;
  *   all triangles  
  *   Modified 24 August 2017 for Exercise 3, to make into a subclass
  *   of AbstractShape
-
  *
+ *      Edited by Nonthakorn Sukprom 60070503435, 15 February 2020
  */
 public class Triangle extends AbstractShape
 {
@@ -35,7 +34,8 @@ public class Triangle extends AbstractShape
        anchor = new Point(x1,y1);
        vertices.add(anchor);
        vertices.add(new Point(x2,y2));
-       vertices.add(new Point(x3,y3));		    
+       vertices.add(new Point(x3,y3));
+       calBoundBox();
     }
 
     /**
@@ -121,6 +121,7 @@ public class Triangle extends AbstractShape
 	    Point p = vertices.get(i);
 	    buffer.append(" (" + p.x + "," + p.y + ") ");
 	}
+        buffer.append("\n with bounding X: " + lowestX + " - " + highestX + " Y : " + lowestY + "-" +highestY);
 	return buffer.toString();
     }
 

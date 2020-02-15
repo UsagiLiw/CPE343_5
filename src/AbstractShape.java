@@ -1,10 +1,11 @@
-import java.util.ArrayList;
 import java.awt.*;
+import java.util.ArrayList;
 /**
 S *  AbstractShape class. Intended to serve as a superclass (generalization) for
  *  individual shapes like Triangle, Square, etc.
  *
  *  V2 - Created by Sally Goldin, 21 August 2017
+ *  Edited by Nonthakorn Sukprom 60070503435, 15 February 2020
  */
 public abstract class AbstractShape
 {
@@ -16,6 +17,11 @@ public abstract class AbstractShape
 
     /** list of points */
     protected ArrayList<Point> vertices = new ArrayList<Point>();
+
+    protected int highestX;
+    protected int lowestX;
+    protected int highestY;
+    protected int lowestY;
 
     /** how many points? */
     //protected int pointCount; //safer to use size() from vertices!
@@ -106,18 +112,18 @@ public abstract class AbstractShape
      */
     public void draw(Graphics2D graphics,Color fillColor)
     {
-	draw(graphics);  /* draw the outline */
-	int size = vertices.size();
-	int x[] = new int[size];
-	int y[] = new int[size];
-	for (int i = 0; i < size; i++)
-	{
-	    Point p = vertices.get(i);
-	    x[i] = p.x;
-	    y[i] = p.y;
-	}
-	graphics.setPaint(fillColor);
-	graphics.fillPolygon(x,y,size);
+		draw(graphics);  /* draw the outline */
+		int size = vertices.size();
+		int x[] = new int[size];
+		int y[] = new int[size];
+		for (int i = 0; i < size; i++)
+		{
+			Point p = vertices.get(i);
+			x[i] = p.x;
+			y[i] = p.y;
+		}
+		graphics.setPaint(fillColor);
+		graphics.fillPolygon(x,y,size);
     }
 
     /**
@@ -139,12 +145,53 @@ public abstract class AbstractShape
      */
     public static void drawAll(Graphics2D graphics)
     {
-	for (int i=0; i < allFigures.size(); i++)
-	{
-	    AbstractShape shape = allFigures.get(i);
-	    shape.draw(graphics);
-	}
+		for (int i=0; i < allFigures.size(); i++)
+		{
+			AbstractShape shape = allFigures.get(i);
+			shape.draw(graphics);
+		}
     }
+
+	/**
+	 * Check if input coordinate is inside shape or not.
+	 * @param X		X coordinate from input
+	 * @param Y		Y coordinate from input
+	 * @return 		true if input are inside shape, false if not.
+	 */
+    public boolean inShape (int X, int Y)
+	{
+		if ((X <= highestX) && (X >= lowestX) && (Y <= highestY) && (Y >= lowestY))
+		{
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Calculate bounding box of shape
+	 * by find highest and lowest value of X and Y in shape
+	 * then assign to member in object
+	 */
+	protected void calBoundBox ()
+	{
+		/* Initialize value */
+		highestX = anchor.x;
+		lowestX = anchor.x;
+		highestY = anchor.y;
+		lowestY = anchor.y;
+		for (int i = 0;i < vertices.size(); i++)
+		{
+			Point currentPoint = vertices.get(i);
+			if (highestX < currentPoint.x)
+				highestX = currentPoint.x;
+			if (lowestX > currentPoint.x)
+				lowestX = currentPoint.x;
+			if (highestY < currentPoint.y)
+				highestY = currentPoint.y;
+			if (lowestY > currentPoint.y)
+				lowestY = currentPoint.y;
+		}
+	}
 
 
 }
