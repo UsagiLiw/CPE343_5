@@ -15,11 +15,9 @@ import java.awt.*;
  */
 public class Triangle extends AbstractShape
 {
-    
-
    /**
     * Constructor creates a new Triangle by setting the
-    * values of the sets of vertext coordinates.
+    * values of the sets of vertex coordinates.
     * Also increments counter, sets drawing color adn stores in allFigures.
     * @param     x1        X coord of first vertex
     * @param     y1        Y coord of first vertex

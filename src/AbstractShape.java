@@ -18,9 +18,13 @@ public abstract class AbstractShape
     /** list of points */
     protected ArrayList<Point> vertices = new ArrayList<Point>();
 
+    /** Highest X coordinate of the shape (Rightest)*/
     protected int highestX;
+    /** Lowest X coordinate of the shape (Leftest)*/
     protected int lowestX;
+    /** Highest Y coordinate of the shape in numerical context (Highest)*/
     protected int highestY;
+    /** Lowest Y coordinate of the shape in numerical context (Lowest)*/
     protected int lowestY;
 
     /** how many points? */

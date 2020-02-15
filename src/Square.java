@@ -67,7 +67,8 @@ public class Square extends AbstractShape
      */
     public String toString()
     {
-	String value = "Square: upper left at (" + anchor.x+","+anchor.y+") with sides " + oneside + "\n with bounding X: " + lowestX + " - " + highestX + " Y : " + lowestY + "-" +highestY;
+	String value = "Square: upper left at (" + anchor.x+","+anchor.y+") with sides " + oneside
+            + "\n with bounding X: " + lowestX + " - " + highestX + " Y : " + lowestY + "-" +highestY;
 	return value;
     }
 	

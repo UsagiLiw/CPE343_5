@@ -51,6 +51,10 @@ public class Circle extends AbstractShape
         return (double) Math.PI * Math.pow(radius,2);
     }
 
+    /**
+     * Draw the shape on canvas
+     * @param  graphics    Graphics context for drawing
+     */
     public void draw(Graphics2D graphics)
     {	
        graphics.setPaint(drawColor);
@@ -62,6 +66,11 @@ public class Circle extends AbstractShape
        graphics.drawString(new String(" " + shapeId),labelx,labely);
     }
 
+    /**
+     * Draw the shape with color
+     * @param  graphics    Graphics context for drawing
+     * @param  fillColor   Color to use for filling.
+     */
     public void draw(Graphics2D graphics, Color fillColor)
     {
         draw(graphics);
