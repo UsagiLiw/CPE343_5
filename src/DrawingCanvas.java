@@ -11,10 +11,6 @@
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * Simple subclass of JPanel that allows us to set the size of
@@ -23,7 +19,7 @@ import java.util.Iterator;
  *    Edited by Nonthakorn Sukprom 60070503435, 15 February 2020
  *
  */
-public class DrawingCanvas extends JPanel implements MouseListener
+public class DrawingCanvas extends JPanel
 {
     /* Preferred size */
    private Dimension desiredSize = null;
@@ -36,7 +32,6 @@ public class DrawingCanvas extends JPanel implements MouseListener
    public DrawingCanvas(int width, int height)
    {
        desiredSize = new Dimension(width,height);
-       addMouseListener(this);
    }
  
    /**
@@ -53,71 +48,6 @@ public class DrawingCanvas extends JPanel implements MouseListener
    public void clear()
    {
 	updateUI();
-   }
-
-   /**
-    * Invoked when the mouse button has been clicked (pressed
-    * and released) on a component.
-    *
-    * @param e
-    */
-   @Override
-   public void mouseClicked(MouseEvent e)
-   {
-      int posX = e.getX();
-      int posY = e.getY();
-      ArrayList<AbstractShape> selectedShapes = new ArrayList<AbstractShape>();
-      System.out.println(" MOUSE CLICKED AT \n X: " + posX + " Y: " + posY + "\n");
-      Iterator iterator = AbstractShape.allFigures.iterator();
-      while (iterator.hasNext())
-      {
-         AbstractShape currentShape = (AbstractShape) iterator.next();
-         if (currentShape.inShape(posX, posY))
-         {
-            currentShape.draw((Graphics2D) getGraphics(),currentShape.drawColor);
-            break;
-         }
-      }
-   }
-
-   /**
-    * Invoked when a mouse button has been pressed on a component.
-    *
-    * @param e
-    */
-   @Override
-   public void mousePressed(MouseEvent e)
-   {
-   }
-
-   /**
-    * Invoked when a mouse button has been released on a component.
-    *
-    * @param e
-    */
-   @Override
-   public void mouseReleased(MouseEvent e)
-   {
-   }
-
-   /**
-    * Invoked when the mouse enters a component.
-    *
-    * @param e
-    */
-   @Override
-   public void mouseEntered(MouseEvent e)
-   {
-   }
-
-   /**
-    * Invoked when the mouse exits a component.
-    *
-    * @param e
-    */
-   @Override
-   public void mouseExited(MouseEvent e)
-   {
    }
 
 }
