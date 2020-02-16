@@ -29,7 +29,7 @@ public class ShapeFileTester
 		viewer.setVisible(true);
 		try
 		{
-			Thread.sleep(1000);
+			Thread.sleep(100);
 		}
 		catch (InterruptedException ie)
 		{

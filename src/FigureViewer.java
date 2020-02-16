@@ -6,8 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  *  FigureViewer
@@ -121,18 +119,10 @@ public class FigureViewer extends JFrame
    {
       int posX = e.getX();
       int posY = e.getY();
-      ArrayList<AbstractShape> selectedShapes = new ArrayList<AbstractShape>();
       System.out.println(" MOUSE CLICKED AT \n X: " + posX + " Y: " + posY + "\n");
-      Iterator iterator = AbstractShape.allFigures.iterator();
-      while (iterator.hasNext())
-      {
-         AbstractShape currentShape = (AbstractShape) iterator.next();
-         if (currentShape.inShape(posX, posY))
-         {
-            currentShape.draw(getViewerGraphics(),currentShape.drawColor);
-            break;
-         }
-      }
+      AbstractShape selectedShape = AbstractShape.inShape(posX,posY);
+      if (selectedShape != null)
+         selectedShape.draw(getViewerGraphics(),selectedShape.drawColor);
    }
 
    /**
@@ -177,6 +167,7 @@ public class FigureViewer extends JFrame
 
 
 }
+
 
 
 
