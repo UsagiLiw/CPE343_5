@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Iterator;
+
 /**
 S *  AbstractShape class. Intended to serve as a superclass (generalization) for
  *  individual shapes like Triangle, Square, etc.
@@ -162,13 +164,35 @@ public abstract class AbstractShape
 	 * @param Y		Y coordinate from input
 	 * @return 		true if input are inside shape, false if not.
 	 */
-    public boolean inShape (int X, int Y)
+    /*public boolean inShape (int X, int Y)
 	{
 		if ((X <= highestX) && (X >= lowestX) && (Y <= highestY) && (Y >= lowestY))
 		{
 			return true;
 		}
 		return false;
+	}*/
+	/**
+	 * Check if input coordinate is inside shape or not.
+	 * @param X		X coordinate from input
+	 * @param Y		Y coordinate from input
+	 * @return 		AbstractShape object that are firstly selected.
+	 */
+	public static AbstractShape inShape (int X, int Y)
+	{
+		AbstractShape selectedShape = null;
+		Iterator iterator = allFigures.iterator();
+		while (iterator.hasNext())
+		{
+			AbstractShape currentShape = (AbstractShape) iterator.next();
+			if ((X <= currentShape.highestX) && (X >= currentShape.lowestX) &&
+					(Y <= currentShape.highestY) && (Y >= currentShape.lowestY))
+			{
+				selectedShape = currentShape;
+				break;
+			}
+		}
+		return selectedShape;
 	}
 
 	/**
