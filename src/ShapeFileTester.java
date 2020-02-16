@@ -27,6 +27,13 @@ public class ShapeFileTester
 		viewer = new FigureViewer();
 		viewer.pack();
 		viewer.setVisible(true);
+		try
+		{
+			Thread.sleep(1000);
+		}
+		catch (InterruptedException ie)
+		{
+		}
 		reader = new ShapeReader();
 		System.out.print("Trying to open'" + args[0] + "' ... ");
 		if (!reader.open(args[0]))
